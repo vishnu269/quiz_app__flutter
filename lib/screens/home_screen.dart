@@ -4,6 +4,7 @@ import 'package:quizappflutter/models/constants.dart';
 import 'package:quizappflutter/models/question_model.dart';
 import 'package:quizappflutter/widgets/next_button.dart';
 import 'package:quizappflutter/widgets/question_widget.dart';
+import 'package:quizappflutter/widgets/result_box.dart';
 
 import '../widgets/option_card.dart';
 
@@ -34,13 +35,22 @@ class _HomeScreenState extends State<HomeScreen> {
   int score = 0;
 
   bool isPressed = false;
-
+  //create a bool value to check if the user has clicked
   bool isAlreadySelected = false;
 
   //create a function to display the next question
   void nextQuestion() {
     if (index == _questions.length - 1) {
-      return;
+      //this is the block where questions end
+      showDialog(
+          context: context,
+          barrierDismissible:
+              false, //it will disable the dismiss function on clicking outside of box
+          builder: (ctx) => ResultBox(
+                result: score, //total points the user get
+                questionLength: _questions.length,
+                onPressed: startOver, //out of how many question
+              ));
     } else {
       if (isPressed) {
         setState(() {
@@ -67,12 +77,23 @@ class _HomeScreenState extends State<HomeScreen> {
     } else {
       if (value == true) {
         score++;
-        setState(() {
-          isPressed = true;
-          isAlreadySelected = true;
-        });
       }
+      setState(() {
+        isPressed = true;
+        isAlreadySelected = true;
+      });
     }
+  }
+
+  //create a function to start over
+  void startOver() {
+    setState(() {
+      index = 0;
+      score = 0;
+      isPressed = false;
+      isAlreadySelected = false;
+    });
+    Navigator.pop(context);
   }
 
   @override
