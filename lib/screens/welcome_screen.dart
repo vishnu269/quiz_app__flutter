@@ -6,15 +6,19 @@ import 'package:quizappflutter/screens/home_screen.dart';
 
 import '../_constants.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: background,
       body: Stack(children: [
-        // WebsafeSvg.asset("assets/icons/bgimg.svg", fit: BoxFit.contain),
-
         SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -59,8 +63,8 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                Spacer(),
-                //it will take 1/6 specs
+                Spacer(), //it will take 1/6 specs
+
                 InkWell(
                   onTap: () {
                     Navigator.push(

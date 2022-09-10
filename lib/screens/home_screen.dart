@@ -17,20 +17,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   //create an object for DBconnect
   var db = DBconnect();
-  // List<Questions> _questions = [
-  //   Questions(id: '10', title: 'What is 4 + 8 ?', options: {
-  //     '5': false,
-  //     '14': false,
-  //     '12': true,
-  //     '16': false,
-  //   }),
-  //   Questions(id: '11', title: 'What is 30 + 20 ?', options: {
-  //     '50': true,
-  //     '40': false,
-  //     '60': false,
-  //     '70': false,
-  //   }),
-  // ];
+
   late Future _questions;
 
   Future<List<Questions>> getData() async {
