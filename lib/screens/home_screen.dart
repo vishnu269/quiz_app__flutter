@@ -129,10 +129,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 //change the background
                 backgroundColor: background,
                 appBar: AppBar(
-                  title: const Text('Quiz App'),
+                  title: const Text(
+                    'Quiz App',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      color: Colors.cyanAccent,
+                    ),
+                  ),
                   backgroundColor: background,
                   shadowColor: Colors.transparent,
                   actions: [
+                    SizedBox(height: 30.0),
                     Padding(
                       padding: const EdgeInsets.all(18.0),
                       child: Text(
@@ -142,11 +149,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+
                 body: Container(
                   width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
                   child: Column(
                     children: [
+                      SizedBox(height: 30.0),
                       //add questionwidget here
                       Questionwidget(
                         indexAction: index,
@@ -184,12 +193,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 //use the  floating action button
                 floatingActionButton: GestureDetector(
                   onTap: () => nextQuestion(extractedData.length),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: NextButton(
-
-                        //the above nextQuestion function ),
-                        ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    child: NextButton(),
                   ),
                 ),
 
@@ -198,8 +204,23 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             }
           } else {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                  SizedBox(height: 20.0),
+                  Text(
+                    'Please Wait while questions are loading..',
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      decoration: TextDecoration.none,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                ],
+              ),
             );
           }
           return const Center(

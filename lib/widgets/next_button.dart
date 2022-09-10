@@ -14,10 +14,11 @@ class NextButton extends StatelessWidget {
         color: neutral,
         borderRadius: BorderRadius.circular(10.0),
       ),
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: const Text(
         "Next Question",
         textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 18.0),
       ),
     );
   }

@@ -9,14 +9,6 @@ class DBconnect {
   final url = Uri.parse(
       'https://simplequizapp-c3c6d-default-rtdb.firebaseio.com/questions.json');
 
-  Future<void> addQuestion(Questions question) async {
-    http.post(url,
-        body: json.encode({
-          'title': question.title,
-          'options': question.options,
-        }));
-  }
-
   //fetch the data from database
   Future<List<Questions>> fetchQuestions() async {
     //we got the data from just doing this,
