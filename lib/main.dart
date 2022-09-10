@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizappflutter/models/db_connect.dart';
-import 'package:quizappflutter/models/question_model.dart';
-import 'package:quizappflutter/screens/home_screen.dart';
+import 'package:quizappflutter/screens/welcome_screen.dart';
 
 void main() {
   var db = DBconnect();
@@ -19,8 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //set a homepage
-      home: HomeScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizappflutter/models/constants.dart';
 import 'package:quizappflutter/models/db_connect.dart';
@@ -214,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     'Please Wait while questions are loading..',
                     style: TextStyle(
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.blueAccent,
                       decoration: TextDecoration.none,
                       fontSize: 14.0,
                     ),
