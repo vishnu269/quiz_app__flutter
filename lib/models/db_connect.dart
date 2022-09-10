@@ -18,25 +18,27 @@ class DBconnect {
   }
 
   //fetch the data from database
-  Future<void> fetchQuestions() async {
+  Future<List<Questions>> fetchQuestions() async {
     //we got the data from just doing this,
     //now lets print to see what we got
-    http.get(url).then((response) {
+    return http.get(url).then((response) {
       //the 'then' method returns a 'response' which is our data
       // to whats inside we have to decode it first
 
-      //  final json = "[" + response.body + "]";
       var data = json.decode(response.body) as Map<String, dynamic>;
+      List<Questions> newQuestions = [];
 
-      // data.forEach((key, value) {
-      //   var newQuestion = Questions(
-      //     id: key, //the encrypted key/the title we gave to our data
-      //     title: value['title'], //title of question
-      //     options: value['options'], //options of the question
-      //   );
-      // });
+      data.forEach((key, value) {
+        var newQuestion = Questions(
+          id: key, //the encrypted key/the title we gave to our data
+          title: value['title'], //title of question
+          options: Map.castFrom(value['options']), //options of the question
+        );
+        //add to newQuestions
+        newQuestions.add(newQuestion);
+      });
 
-      print(data);
+      return newQuestions;
     });
   }
 }
